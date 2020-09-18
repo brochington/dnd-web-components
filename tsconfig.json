@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "allowJs": true,
+    "noEmit": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "components": ["src/components"],
+      "components/*": ["src/components/*"],
+      "dom-elements/*": ["src/dom-elements/*"],
+      "systems": ["src/systems"],
+      "systems/*": ["src/systems/*"],
+      "types": ["src/types.ts"]
+    }
+  },
+  "include": [
+    "src",
+    "interfaces.d.ts"
+  ],
+  "exclude": [
+    "src/test"
+  ]
+}

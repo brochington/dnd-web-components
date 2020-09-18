@@ -18,7 +18,7 @@ const babelLoaderConfig = {
 
 module.exports = {
   entry: [
-    path.resolve(process.cwd(), "src/index.tsx"),
+    path.resolve(process.cwd(), "src/index.ts"),
   ],
   output: {
     libraryTarget: 'umd',
@@ -37,12 +37,12 @@ module.exports = {
     rules: [
       {
         test: /\.ts(x?)$/,
-        include: path.join(process.cwd(), "src/client"),
+        include: path.join(process.cwd(), "src"),
         use: [babelLoaderConfig],
       },
       {
         test: /\.m?js$/,
-        include: path.join(process.cwd(), "src/client"),
+        include: path.join(process.cwd(), "src"),
         use: [babelLoaderConfig],
       },
       {
