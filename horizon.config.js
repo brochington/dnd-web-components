@@ -75,6 +75,13 @@ const config = {
       width: "1px",
       radius: "3px",
     },
+    {
+      key: "2",
+      style: "solid",
+      color: "orange",
+      width: "1px",
+      radius: "0px",
+    },
   ],
   widths: {
     s1: "1rem",

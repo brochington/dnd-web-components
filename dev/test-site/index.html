@@ -12,25 +12,26 @@
 <body>
   <dnd-overlord>
     <div class="row m3">
-      <div class="wrem-5 br-1">
+      <div class="wrem-5">
+        <!-- just your very basic drag, with snap-back -->
         <drag-wrapper>
-          <drag-content>
-            <div class="wrem-3 b-1 cursor-move">
-              Drag Me
-            </div>
-          </drag-content>
-
-          <dragging-content>
-            <div class="wrem-3 b-1 cursor-move">
-              Draggin'
-            </div>
-          </dragging-content>
-
-          <dragging-placeholder>
-            <div class="wrem-3 b-1 cursor-move">
-              I'm a ghost
-            </div>
-          </dragging-placeholder>
+          <div class="b-2 wrem-3">
+            <drag-content>
+              <div class="wrem-3 b-1 cursor-move">
+                1
+              </div>
+            </drag-content>
+          </div>
+        </drag-wrapper>
+        <!-- Basic drag, with holding of position -->
+        <drag-wrapper>
+          <div class="b-2 wrem-3">
+            <drag-content maintain-position>
+              <div class="wrem-3 b-1 cursor-move">
+                2
+              </div>
+            </drag-content>
+          </div>
         </drag-wrapper>
       </div>
       <div class="m3">

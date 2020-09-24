@@ -6,5 +6,6 @@ module.exports = {
   components: pathInClient('components'),
   'dom-elements': pathInClient('dom-elements'),
   systems: pathInClient('systems'),
-  types: pathInClient('types')
+  types: pathInClient('types'),
+  utils: pathInClient('utils')
 };

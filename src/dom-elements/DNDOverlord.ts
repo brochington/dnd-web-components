@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from "uuid";
 import { World } from '@brochington/ecstatic';
 import { Components } from '../components';
 import Systems from "systems";
-// import { }
 
 class DNDOverlord extends HTMLElement {
   overlordID: string;
@@ -18,14 +17,17 @@ class DNDOverlord extends HTMLElement {
 
   constructor() {
     super();
+    console.log("construct DNDOverlord");
 
     this.overlordID = uuidv4();
 
     this.world = new World<Components>();
     this.systems = new Systems(this.world);
   }
-}
 
-customElements.define("dnd-overlord", DNDOverlord);
+  connectedCallback() {
+    console.log('cc DNDOverlord');
+  }
+}
 
 export default DNDOverlord;

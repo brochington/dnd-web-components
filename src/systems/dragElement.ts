@@ -1,19 +1,43 @@
 import { SystemArgs } from 'types';
-import { Components } from 'components';
+import { getOverlord } from 'utils/elements';
 import DragInteraction from 'components/interactions/DragInteraction';
-
-export const dragElementComps = [Components.DragInteraction];
-
+import DNDOverlord from '../dom-elements/DNDOverlord';
+import DragContent from 'dom-elements/DragContent';
 
 export function dragElement(args: SystemArgs): void {
-  console.log('dragging element');
-  const { components } = args;
-  const interaction = components.get<DragInteraction>(Components.DragInteraction);
+  const { entity, components } = args;
+  const interaction = components.get(DragInteraction);
+  const element = components.get(DragContent);
+
+  const { world, systems } = getOverlord(element);
 
   if (!interaction.initialized) {
-    console.log('init it!!', interaction);
     interaction.initialized = true;
-    console.log('after: ', interaction.initialized);
+
+    const { offsetX, offsetY, offsetLeft, offsetTop } = interaction;
+    // element.style.position = 'absolute';
+    console.log(interaction);
+    const handleMove = (evt: PointerEvent) => {
+      element.style.transform =
+        `translate(${evt.x - offsetX - offsetLeft}px, ${evt.y - offsetY - offsetTop}px)`;
+
+      systems.run();
+    }
+
+    const handleUp = () => {
+      document.removeEventListener('pointermove', handleMove);
+      document.removeEventListener('pointerup', handleUp);
+
+      const maintainPosition = element.hasAttribute("maintain-position");
+      console.log("maintainPosition", maintainPosition);
+      if (!maintainPosition) {
+        element.style.transform = 'none';
+      }
+
+      entity.remove(DragInteraction);
+    }
+
+    document.addEventListener('pointermove', handleMove);
+    document.addEventListener('pointerup', handleUp)
   }
-  // const interaction = 
 };

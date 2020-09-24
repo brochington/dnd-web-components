@@ -1,17 +1,22 @@
-import { Component } from '@brochington/ecstatic';
-import { Components } from '../index';
-
-interface DragInteractionStorage {
-  element: HTMLElement;
-  initialized: boolean;
+interface Args {
+  offsetX: number;
+  offsetY: number;
+  offsetLeft: number;
+  offsetTop: number;
 }
 
-class DragInteraction extends Component<Components, DragInteractionStorage> {
-  type = Components.DragInteraction;
+class DragInteraction {
+  offsetX = 0;
+  offsetY = 0;
+  offsetLeft = 0;
+  offsetTop = 0;
+  initialized = false;
 
-  constructor(storage: DragInteractionStorage) {
-    super(storage);
-    // this.storage = storage;
+  constructor(args: Args) {
+    this.offsetX = args.offsetX;
+    this.offsetY = args.offsetY;
+    this.offsetLeft = args.offsetLeft;
+    this.offsetTop = args.offsetTop;
   }
 }
 

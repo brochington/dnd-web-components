@@ -5,17 +5,27 @@
   - Need to figure out some kind of state management. Will the state be global?
 */
 
-import DNDOverlord from './DNDOverlord';
+import { Entity } from '@brochington/ecstatic';
+import DNDOverlord from 'dom-elements/DNDOverlord';
+import { Components } from 'components';
+import { getWorld } from 'utils/elements';
 
 class DragWrapper extends HTMLElement {
+  entity: Entity<Components>;
+
   constructor() {
     super();
 
-    console.time('closest');
-    const a = this.closest<DNDOverlord>("dnd-overlord");
-    console.timeEnd("closest");
-    console.log('a', a?._state);
+    this.entity = getWorld(this).createEntity().add(this);
+  }
+
+  connectedCallback() {
+    console.log("cc DragWrapper");
+  }
+
+  disconnectedCallback() {
+    this.entity.destroy();
   }
 }
 
-customElements.define("drag-wrapper", DragWrapper);
+export default DragWrapper;

@@ -371,6 +371,12 @@ textarea,
       --border-1-color: var(--teal);
       --border-1-radius: 3px;
       
+
+      --border-2-style: solid;
+      --border-2-width: 1px;
+      --border-2-color: orange;
+      --border-2-radius: 0px;
+      
       --width-s1: 1rem;
       --height-s1: 1rem;
       }/* dark-blue */.dark-blue { color: #001426; color: var(--dark-blue); }/* dark-blue borders */.b-dark-blue  { border-color: #001426; border-color: var(--dark-blue); }.bt-dark-blue { border-top-color: #001426; border-top-color: var(--dark-blue); }.br-dark-blue { border-right-color: #001426; border-right-color: var(--dark-blue); }.bb-dark-blue { border-bottom-color: #001426; border-bottom-color: var(--dark-blue); }.bl-dark-blue { border-left-color: #001426; border-left-color: var(--dark-blue); }/* dark-blue backgrounds */.bgd-dark-blue             { background-color: #001426; background-color: var(--dark-blue); }.bgd-dark-blue-tint-10     { background-color: rgb(25, 43, 60); }.bgd-dark-blue-tint-20     { background-color: rgb(51, 67, 81); }.bgd-dark-blue-tint-30     { background-color: rgb(77, 91, 103); }.bgd-dark-blue-tint-40     { background-color: rgb(102, 114, 125); }.bgd-dark-blue-tint-50     { background-color: rgb(128, 138, 147); }.bgd-dark-blue-tint-60     { background-color: rgb(153, 161, 168); }.bgd-dark-blue-tint-70     { background-color: rgb(179, 185, 190); }.bgd-dark-blue-tint-80     { background-color: rgb(204, 208, 212); }.bgd-dark-blue-tint-90     { background-color: rgb(230, 232, 233); }.bgd-dark-blue-shade-10    { background-color: rgb(0, 18, 34); }.bgd-dark-blue-shade-20    { background-color: rgb(0, 16, 30); }.bgd-dark-blue-shade-30    { background-color: rgb(0, 14, 27); }.bgd-dark-blue-shade-40    { background-color: rgb(0, 12, 23); }.bgd-dark-blue-shade-50    { background-color: rgb(0, 10, 19); }.bgd-dark-blue-shade-60    { background-color: rgb(0, 8, 15); }.bgd-dark-blue-shade-70    { background-color: rgb(0, 6, 11); }.bgd-dark-blue-shade-80    { background-color: rgb(0, 4, 8); }.bgd-dark-blue-shade-90    { background-color: rgb(0, 2, 4); }.bgd-dark-blue-opacity-10  { background-color: rgba(0, 20, 38, 0.1); background-color: rgba(var(--dark-blue-rgb), 0.1); }.bgd-dark-blue-opacity-20  { background-color: rgba(0, 20, 38, 0.2); background-color: rgba(var(--dark-blue-rgb), 0.2); }.bgd-dark-blue-opacity-30  { background-color: rgba(0, 20, 38, 0.3); background-color: rgba(var(--dark-blue-rgb), 0.3); }.bgd-dark-blue-opacity-40  { background-color: rgba(0, 20, 38, 0.4); background-color: rgba(var(--dark-blue-rgb), 0.4); }.bgd-dark-blue-opacity-50  { background-color: rgba(0, 20, 38, 0.5); background-color: rgba(var(--dark-blue-rgb), 0.5); }.bgd-dark-blue-opacity-60  { background-color: rgba(0, 20, 38, 0.6); background-color: rgba(var(--dark-blue-rgb), 0.6); }.bgd-dark-blue-opacity-70  { background-color: rgba(0, 20, 38, 0.7); background-color: rgba(var(--dark-blue-rgb), 0.7); }.bgd-dark-blue-opacity-80  { background-color: rgba(0, 20, 38, 0.8); background-color: rgba(var(--dark-blue-rgb), 0.8); }.bgd-dark-blue-opacity-90  { background-color: rgba(0, 20, 38, 0.9); background-color: rgba(var(--dark-blue-rgb), 0.9); }/* dark-blue svg */body .fill-dark-blue,
@@ -491,6 +497,27 @@ textarea,
           border-left-width: 1px;
           border-left-color: #02738C;
           border-left-color: var(--teal);
+        }.b-2 {
+          border-style: solid;
+          border-width: 1px;
+          border-color: orange;
+          border-radius: 0px;
+        }.bt-2 {
+          border-top-style: solid;
+          border-top-width: 1px;
+          border-top-color: orange;
+        }.br-2 {
+          border-right-style: solid;
+          border-right-width: 1px;
+          border-right-color: orange;
+        }.bb-2 {
+          border-bottom-style: solid;
+          border-bottom-width: 1px;
+          border-bottom-color: orange;
+        }.bl-2 {
+          border-left-style: solid;
+          border-left-width: 1px;
+          border-left-color: orange;
         }html {
   box-sizing: border-box;
   width: 100%;

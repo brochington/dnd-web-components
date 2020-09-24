@@ -38,7 +38,7 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "dependencies": {
-    "@brochington/ecstatic": "0.0.23",
+    "@brochington/ecstatic": "0.1.0",
     "@brochington/horizon": "0.0.6",
     "@types/lodash": "^4.14.161",
     "lodash": "^4.17.20",

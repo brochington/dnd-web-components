@@ -7,3 +7,5 @@ class DraggingContent extends HTMLElement {
 }
 
 customElements.define("dragging-content", DraggingContent);
+
+export default DraggingContent;
