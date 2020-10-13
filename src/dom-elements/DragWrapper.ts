@@ -6,7 +6,6 @@
 */
 
 import { Entity } from '@brochington/ecstatic';
-import DNDOverlord from 'dom-elements/DNDOverlord';
 import { Components } from 'components';
 import { getWorld } from 'utils/elements';
 
@@ -17,10 +16,6 @@ class DragWrapper extends HTMLElement {
     super();
 
     this.entity = getWorld(this).createEntity().add(this);
-  }
-
-  connectedCallback() {
-    console.log("cc DragWrapper");
   }
 
   disconnectedCallback() {

@@ -4,6 +4,7 @@ import { getWorld, getOverlord } from "utils/elements";
 import DNDOverlord from "dom-elements/DNDOverlord";
 import DragWrapper from "dom-elements/DragWrapper";
 import DragInteraction from "components/interactions/DragInteraction";
+import DropZone from "dom-elements/DropZone";
 
 /*
   This should probably add and remove itself from the drag wrapper state.
@@ -16,15 +17,15 @@ import DragInteraction from "components/interactions/DragInteraction";
 
     - hold-position: tells the dragged item to maintain current position after
                      being dragged.
+    - reset: Reset the position to the original position.
 */
 
 class DragContent extends HTMLElement {
-  _id: number;
+
+  dropZone: DropZone | null = null;
 
   constructor() {
     super();
-    console.log("construct DragContent");
-    this._id = Math.random();
 
     const dragWrapper = this.closest<DragWrapper>("drag-wrapper");
 
@@ -33,11 +34,10 @@ class DragContent extends HTMLElement {
     }
 
     this.addEventListener("pointerdown", this.onPointerDown);
-    this.addEventListener("pointerover", this.onPointerOver);
+    // this.addEventListener("pointerover", this.onPointerOver);
   }
 
   onPointerDown(evt: PointerEvent) {
-    // console.log('pointer_down', this._id);
     const { world, systems } = getOverlord(this);
     const dragWrapper = this.closest<DragWrapper>('drag-wrapper');
 
@@ -45,42 +45,44 @@ class DragContent extends HTMLElement {
 
     // OffsetLeft and OffsetTop are use to calculate the original top and left
     // when a transform is applied. This is needed because getBoundingClientRect()
-    // inlcudes this original number.
-    const t = getComputedStyle(this, null).transform;
+    // includes this original number.
+    const computedStyles = getComputedStyle(this, null);
+    const { transform: t, borderWidth } = computedStyles;
+
     let offsetLeft = this.offsetLeft;
     let offsetTop = this.offsetTop;
+    const rect = this.getBoundingClientRect();
+
+    // this.style.boxSizing = 'content-box';
 
     if (t !== "none") {
       const tParsed = t.match(/-?\d+\.?\d*/g)?.map(Number);
 
       if (tParsed) {
-        const rect = this.getBoundingClientRect();
+        console.log("tParsed!!", tParsed);
         offsetLeft = rect.left - tParsed[4];
         offsetTop = rect.top - tParsed[5];
       }
     }
 
-    console.log("offsets", offsetLeft, offsetTop);
-
     dragWrapper.entity.add(
       new DragInteraction({
+        x: evt.x,
+        y: evt.y,
         offsetLeft: offsetLeft,
         offsetTop: offsetTop,
         // offsetX and offsetY are the offset of where the mouse hits within the drag element.
-        offsetX: evt.offsetX,
-        offsetY: evt.offsetY,
+        // These CANNOT be determined by element.offsetX/offsetY because they don't include the
+        // border width.
+        // https://stackoverflow.com/questions/35360704/wrong-offsetx-and-offsety-on-mousedown-event-of-parent-element
+        offsetX: evt.clientX - rect.left,
+        offsetY: evt.clientY - rect.top,
+        clientX: evt.clientX,
+        clientY: evt.clientY,
       })
     );
 
     systems.run();
-  }
-
-  // onPointerOver() {
-  //   console.log("over!", this._id);
-  // }
-
-  connectedCallback() {
-    console.log("cc DragContent");
   }
 
   disconnectedCallback() {

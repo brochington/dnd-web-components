@@ -15,12 +15,20 @@
       <div class="wrem-5">
         <!-- just your very basic drag, with snap-back -->
         <drag-wrapper>
-          <div class="b-2 wrem-3">
+          <div class="wrem-3">
             <drag-content>
-              <div class="wrem-3 b-1 cursor-move">
-                1
+              <div>
+                <!-- <div class="wrem-3 cursor-move"> -->
+                <div class="wrem-3 b-1 cursor-move" style="border-width: 5px;">
+                  1
+                </div>
               </div>
             </drag-content>
+            <dragging-content>
+              <div class="wrem-3 b-2 cursor-move">
+                Dragging!
+              </div>
+            </dragging-content>
           </div>
         </drag-wrapper>
         <!-- Basic drag, with holding of position -->
@@ -33,12 +41,29 @@
             </drag-content>
           </div>
         </drag-wrapper>
+        <drag-wrapper>
+          <div class="b-2 wrem-3">
+            <drag-content>
+              <div class="wrem-3 b-1 cursor-move">
+                3
+              </div>
+            </drag-content>
+            <dragging-content>
+              <div class="wrem-3 b-2 cursor-move">
+                dragging
+              </div>
+            </dragging-content>
+          </div>
+        </drag-wrapper>
       </div>
       <div class="m3">
         <drop-zone>
-          <div class="wrem-8 hrem-5 flex-center b-dashed">Drop here.</div>
+          <div class="wrem-8 hrem-5 flex-center b-dashed">Drop 1</div>
         </drop-zone>
-
+        <div class="mb3"></div>
+        <drop-zone>
+          <div class="wrem-8 hrem-5 flex-center b-dashed">Drop 2</div>
+        </drop-zone>
       </div>
     </div>
   </dnd-overlord>

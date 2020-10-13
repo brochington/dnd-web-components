@@ -17,16 +17,11 @@ class DNDOverlord extends HTMLElement {
 
   constructor() {
     super();
-    console.log("construct DNDOverlord");
 
     this.overlordID = uuidv4();
 
     this.world = new World<Components>();
     this.systems = new Systems(this.world);
-  }
-
-  connectedCallback() {
-    console.log('cc DNDOverlord');
   }
 }
 

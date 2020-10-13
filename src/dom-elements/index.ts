@@ -3,7 +3,7 @@
 import DNDOverlord from './DNDOverlord';
 import DragWrapper from './DragWrapper';
 import DragContent from './DragContent';
-// import './DraggingContent';
+import DraggingContent from './DraggingContent';
 // import './DraggingPlaceholder';
 
 import DropZone from './DropZone';
@@ -20,6 +20,7 @@ import DropZone from './DropZone';
 customElements.define("dnd-overlord", DNDOverlord);
 customElements.define("drag-wrapper", DragWrapper);
 customElements.define("drag-content", DragContent);
+customElements.define("dragging-content", DraggingContent);
 
 // Drop related elements
 customElements.define("drop-zone", DropZone);
