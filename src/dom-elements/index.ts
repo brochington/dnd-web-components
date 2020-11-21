@@ -1,7 +1,7 @@
 // Order here matters!
 
-import DNDOverlord from './DNDOverlord';
-import DragWrapper from './DragWrapper';
+import DNDContext from "./DNDContext";
+import DNDDrag from './DNDDrag';
 import DragContent from './DragContent';
 import DraggingContent from './DraggingContent';
 // import './DraggingPlaceholder';
@@ -17,8 +17,8 @@ import DropZone from './DropZone';
   lead to weird errors.
 */
 
-customElements.define("dnd-overlord", DNDOverlord);
-customElements.define("drag-wrapper", DragWrapper);
+customElements.define("dnd-context", DNDContext);
+customElements.define("dnd-drag", DNDDrag);
 customElements.define("drag-content", DragContent);
 customElements.define("dragging-content", DraggingContent);
 

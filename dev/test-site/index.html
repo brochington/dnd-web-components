@@ -10,63 +10,66 @@
 </head>
 
 <body>
-  <dnd-overlord>
-    <div class="row m3">
-      <div class="wrem-5">
-        <!-- just your very basic drag, with snap-back -->
-        <drag-wrapper>
-          <div class="wrem-3">
-            <drag-content>
-              <div>
-                <!-- <div class="wrem-3 cursor-move"> -->
+  <div class="row m3">
+    <div class="wrem-5">
+      <dnd-drag>
+        <drag-content>Hello</drag-content>
+        <!-- <dragging-content>hi</dragging-content> -->
+      </dnd-drag>
+      <dnd-drag>
+        <drag-content>Hello2</drag-content>
+        <!-- <dragging-content>yo</dragging-content> -->
+      </dnd-drag>
+      <dnd-drag>
+        <div class="wrem-5">
+          <drag-content>
+              <div class="wrem-5 cursor-move">
                 <div class="wrem-3 b-1 cursor-move" style="border-width: 5px;">
                   1
                 </div>
               </div>
-            </drag-content>
-            <dragging-content>
-              <div class="wrem-3 b-2 cursor-move">
-                Dragging!
-              </div>
-            </dragging-content>
-          </div>
-        </drag-wrapper>
-        <!-- Basic drag, with holding of position -->
-        <drag-wrapper>
-          <div class="b-2 wrem-3">
-            <drag-content maintain-position>
-              <div class="wrem-3 b-1 cursor-move">
-                2
-              </div>
-            </drag-content>
-          </div>
-        </drag-wrapper>
-        <drag-wrapper>
-          <div class="b-2 wrem-3">
-            <drag-content>
-              <div class="wrem-3 b-1 cursor-move">
-                3
-              </div>
-            </drag-content>
-            <dragging-content>
-              <div class="wrem-3 b-2 cursor-move">
-                dragging
-              </div>
-            </dragging-content>
-          </div>
-        </drag-wrapper>
-      </div>
-      <div class="m3">
-        <drop-zone>
-          <div class="wrem-8 hrem-5 flex-center b-dashed">Drop 1</div>
-        </drop-zone>
-        <div class="mb3"></div>
-        <drop-zone>
-          <div class="wrem-8 hrem-5 flex-center b-dashed">Drop 2</div>
-        </drop-zone>
-      </div>
+          </drag-content>
+          <dragging-content>
+            <div class="wrem-5 b-2 cursor-move">
+              Dragging!
+            </div>
+          </dragging-content>
+        </div>
+      </dnd-drag>
+      <dnd-drag>
+        <div class="b-2 wrem-3">
+          <drag-content maintain-position>
+            <div class="wrem-5 b-1 cursor-move">
+              2
+            </div>
+          </drag-content>
+        </div>
+      </dnd-drag>
+      <dnd-drag>
+        <div class="b-2 wrem-5">
+          <drag-content>
+            <div class="wrem-5 b-1 cursor-move">
+              3
+            </div>
+          </drag-content>
+          <dragging-content maintain-position>
+            <div class="wrem-5 b-2 cursor-move">
+              dragging
+            </div>
+          </dragging-content>
+        </div>
+      </dnd-drag>
     </div>
-  </dnd-overlord>
+    <div class="m3">
+      <drop-zone id="dz-1">
+        <div class="wrem-8 hrem-5 flex-center b-dashed">Drop Zone 1</div>
+      </drop-zone>
+      <div class="mb3"></div>
+      <drop-zone id="dz-2">
+        <div class="wrem-8 hrem-5 flex-center b-dashed">Drop Zone 2</div>
+      </drop-zone>
+    </div>
+  </div>
   <script src="../../dist/dnd-web-components.js"></script>
 </body>
 

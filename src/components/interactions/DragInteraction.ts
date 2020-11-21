@@ -18,6 +18,8 @@ class DragInteraction {
   offsetTop = 0;
   clientX = 0;
   clientY = 0;
+  initialRect = new DOMRect();
+  initialGhostRect = new DOMRect();
   initialized = false;
 
   constructor(args: Args) {

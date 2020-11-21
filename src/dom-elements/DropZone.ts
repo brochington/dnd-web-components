@@ -3,11 +3,12 @@ import { Components } from "components";
 import DragInteraction from "components/interactions/DragInteraction";
 import { getWorld } from "utils/elements";
 import DragContent from "./DragContent";
+import DraggingContent from "./DraggingContent";
 
 class DropZone extends HTMLElement {
   entity: Entity<Components>;
 
-  items: Set<DragContent>
+  items: Set<DragContent | DraggingContent>
 
   constructor() {
     super();

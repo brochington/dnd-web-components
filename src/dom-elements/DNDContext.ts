@@ -8,7 +8,7 @@ import { World } from '@brochington/ecstatic';
 import { Components } from '../components';
 import Systems from "systems";
 
-class DNDOverlord extends HTMLElement {
+class DNDContext extends HTMLElement {
   overlordID: string;
 
   world: World<Components>;
@@ -25,4 +25,4 @@ class DNDOverlord extends HTMLElement {
   }
 }
 
-export default DNDOverlord;
+export default DNDContext;

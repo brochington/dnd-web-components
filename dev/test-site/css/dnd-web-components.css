@@ -3,6 +3,7 @@ drag-content {
 }
 
 dragging-content {
+  position: absolute;
   display: none;
 }
 

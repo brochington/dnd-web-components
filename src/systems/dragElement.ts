@@ -1,45 +1,22 @@
-import { World } from '@brochington/ecstatic';
 import { SystemArgs } from "types";
-import { getOverlord } from "utils/elements";
+import { getContext } from "utils/elements";
 import DragInteraction from "components/interactions/DragInteraction";
-import DNDOverlord from "../dom-elements/DNDOverlord";
 import DragContent from "dom-elements/DragContent";
+import DraggingContent from "dom-elements/DraggingContent";
 import DropZone from "dom-elements/DropZone";
-import { Components } from "components";
-import DragWrapper from 'dom-elements/DragWrapper';
-import DraggingContent from 'dom-elements/DraggingContent';
-
-function handleOverDZ(x: number, y: number, element: DragContent, world: World<Components>): void {
-  // Detect if over a dropzone by hiding the currently dragged, then doing a test
-  // to see what the element below is.
-  element.hidden = true;
-  const elBelow = document.elementFromPoint(x, y);
-  element.hidden = false;
-
-  const dz = elBelow?.closest<DropZone>("drop-zone");
-
-  // can only be over one drop zone at a time
-  if (dz) {
-    dz.items.add(element);
-  } else {
-    // remove from all dropzones
-    world
-      .grabAll(DropZone)
-      .map(({ component }) => component.items.delete(element));
-  }
-}
+import { handleOverDZ } from "utils/dropzone";
 
 export function dragElement(args: SystemArgs): void {
   const { entity, components } = args;
   const interaction = components.get(DragInteraction);
-  const element = components.get(DragContent);
-  const draggingContent = components.get(DraggingContent);
+  const dragContent = components.get(DragContent);
+  const hasDraggingContent = components.has(DraggingContent);
 
-  console.log('dc', draggingContent);
+  // entitites that have a DraggingContent componenent will be handled
+  // in another system.
+  if (hasDraggingContent) return;
 
-  // const draggingContent = wrapper.querySelector('dragging-content');
-
-  const { world, systems } = getOverlord(element);
+  const { world, systems } = getContext(dragContent);
 
   const { x, y, offsetX, offsetY, offsetLeft, offsetTop } = interaction;
 
@@ -55,17 +32,18 @@ export function dragElement(args: SystemArgs): void {
       document.removeEventListener("pointermove", handleMove);
       document.removeEventListener("pointerup", handleUp);
 
-      const maintainPosition = element.hasAttribute("maintain-position");
+      const maintainPosition = dragContent.hasAttribute("maintain-position");
 
       if (!maintainPosition) {
-        element.style.transform = "none";
-        
-        const rect = element.getBoundingClientRect();
+        dragContent.style.transform = "none";
 
-        handleOverDZ(rect.x, rect.y, element, world);
+        const rect = dragContent.getBoundingClientRect();
+
+        handleOverDZ(rect.x, rect.y, dragContent, world);
       }
-      
+
       entity.remove(DragInteraction);
+
       systems.run();
     };
 
@@ -79,14 +57,7 @@ export function dragElement(args: SystemArgs): void {
     y - offsetY - offsetTop
   }px)`;
 
-  // console.log('transform: ', transform);
+  dragContent.style.transform = transform;
 
-  if (draggingContent) {
-    draggingContent.style.display = 'inline-block';
-    draggingContent.style.transform = transform;
-  } else {
-    element.style.transform = transform;
-  }
-
-  handleOverDZ(x, y, element, world);
+  handleOverDZ(x, y, dragContent, world);
 }
