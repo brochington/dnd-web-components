@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./css/horizon-styles.css">
+  <link rel="stylesheet" type="text/css" href="./css/dnd-web-components.css">
+  <title>Examples 1</title>
+</head>
+
+<body class="m3">
+  <h1>Examples 1</h1>
+
+  <div>
+    <h2>Basic Examples</h2>
+    <div>
+      <h3>Standard drag</h3>
+      <dnd-drag>
+        <drag-content>
+          <div class="bgd-teal-tint-90 px2 b-1">Drag me!</div>
+        </drag-content>
+      </dnd-drag>
+    </div>
+    <div>
+      <h3>Snap Back Drag</h3>
+      <dnd-drag>
+        <drag-content snap-back>
+          <div class="bgd-teal-tint-90 px2 b-1">Drag me!</div>
+        </drag-content>
+      </dnd-drag>
+    </div>
+
+    <div class="column">
+      <h3 class="mb3">Contained Drag</h3>
+      <div>
+        <dnd-drag>
+          <drag-contain class="b-1 bgd-teal-tint-90 flex-center" style="height: 200px; width: 360px;">
+            <drag-content snap-back>
+              <div class="bgd-teal-tint-90 px2 b-1">Drag me!</div>
+            </drag-content>
+          </drag-contain>
+        </dnd-drag>
+      </div>
+    </div>
+  </div>
+  <script src="../../dist/dnd-web-components.js"></script>
+</body>
+
+</html>

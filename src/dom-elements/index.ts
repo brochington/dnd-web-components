@@ -1,6 +1,7 @@
 // Order here matters!
 
-import DNDContext from "./DNDContext";
+import DNDContext from './DNDContext';
+import DragContain from './DragContain';
 import DNDDrag from './DNDDrag';
 import DragContent from './DragContent';
 import DraggingContent from './DraggingContent';
@@ -19,6 +20,7 @@ import DropZone from './DropZone';
 
 customElements.define("dnd-context", DNDContext);
 customElements.define("dnd-drag", DNDDrag);
+customElements.define("drag-contain", DragContain);
 customElements.define("drag-content", DragContent);
 customElements.define("dragging-content", DraggingContent);
 
