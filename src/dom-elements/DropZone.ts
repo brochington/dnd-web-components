@@ -16,6 +16,9 @@ class DropZone extends HTMLElement {
     this.entity = getWorld(this).createEntity().add(this);
     this.items = new Set();
 
+    const rect = this.getBoundingClientRect();
+
+    console.log('dropzone rect', rect);
     // this.addEventListener('pointerover', this.onPointerOver);
   }
 

@@ -15,3 +15,7 @@ dragging-content {
 dragging-placeholder {
   display: none;
 }
+
+drop-zone {
+  display: inline-block;
+}

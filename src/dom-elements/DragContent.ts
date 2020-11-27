@@ -4,20 +4,6 @@ import { getContext } from '../utils/elements';
 import DNDDrag from "./DNDDrag";
 import DraggingContent from "./DraggingContent";
 
-/*
-  This should probably add and remove itself from the drag wrapper state.
-  I think all internal dnd components probably should do this.
-
-  attributes:
-    - auto-return: element returns to its original placement after drag end
-      - NOTE: should this be default behavior? Maybe hold-position should be
-              an attr instead...
-
-    - hold-position: tells the dragged item to maintain current position after
-                     being dragged.
-    - reset: Reset the position to the original position.
-*/
-
 function getDraggingContent(el: HTMLElement): DraggingContent | null {
   const dndDrag = el.closest<DNDDrag>("dnd-drag");
 
@@ -36,13 +22,12 @@ class DragContent extends HTMLElement {
     super();
 
     this.addEventListener("pointerdown", this.onPointerDown);
-    // this.addEventListener("pointerover", this.onPointerOver);
   }
 
   onPointerDown(evt: PointerEvent) {
     const { world, systems } = getContext(this);
 
-    // OffsetLeft and OffsetTop are use to calculate the original top and left
+    // OffsetLeft and OffsetTop" are use to calculate the original top and left
     // when a transform is applied. This is needed because getBoundingClientRect()
     // includes this original number.
     const computedStyles = getComputedStyle(this, null);

@@ -17,7 +17,7 @@
     <div>
       <h3>Standard drag</h3>
       <dnd-drag>
-        <drag-content>
+        <drag-content id="fun">
           <div class="bgd-teal-tint-90 px2 b-1">Drag me!</div>
         </drag-content>
       </dnd-drag>
@@ -43,8 +43,25 @@
         </dnd-drag>
       </div>
     </div>
+
+    <div>
+      <h3>Drop Zone 1</h3>
+      <dnd-drag>
+        <drag-content id="fun">
+          <div class="bgd-teal-tint-90 px2 b-1">Drag me!</div>
+        </drag-content>
+      </dnd-drag>
+      <div class="mt1"></div>
+      <drop-zone id="dz-1">
+        <div class="wrem-8 hrem-5 flex-center b-dashed">Drop Zone 1</div>
+        <!-- <div class="wrem-8 hrem-5 flex-center b-dashed">Drop Zone 1</div> -->
+      </drop-zone>
+    </div>
+  </div>
+
   </div>
   <script src="../../dist/dnd-web-components.js"></script>
+  <script src="./fun.js"></script>
 </body>
 
 </html>

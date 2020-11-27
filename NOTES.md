@@ -31,3 +31,6 @@ Drop
 
 Have a global context as default, but able to add a `dnd-context` if needed
 to keep everything it's it's own "scope".
+
+Drag and Drop on Safari:
+https://developer.apple.com/library/archive/documentation/AppleApplications/Conceptual/SafariJSProgTopics/DragAndDrop.html

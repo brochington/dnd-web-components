@@ -5,30 +5,14 @@ import DragContent from "dom-elements/DragContent";
 import DraggingContent from "dom-elements/DraggingContent";
 import DropZone from "dom-elements/DropZone";
 import { handleOverDZ } from "utils/dropzone";
-
-function getParsedTransform(el: HTMLElement): number[] | null {
-  const computedStyles = getComputedStyle(el, null);
-  const { transform: t } = computedStyles;
-
-  if (t !== "none") {
-    const tParsed = t.match(/-?\d+\.?\d*/g)?.map(Number);
-
-    return tParsed ? tParsed : null;
-  }
-  return null;
-}
+import { getParsedTransform } from 'utils/general';
 
 export function dragElement(args: SystemArgs): void {
   const { entity, components } = args;
   const interaction = components.get(DragInteraction);
   const dragContent = components.get(DragContent);
-  const hasDraggingContent = components.has(DraggingContent);
 
   const dragContain = dragContent.closest("drag-contain");
-
-  // entitites that have a DraggingContent componenent will be handled
-  // in another system.
-  if (hasDraggingContent) return;
 
   const { world, systems } = getContext(dragContent);
 
@@ -42,7 +26,7 @@ export function dragElement(args: SystemArgs): void {
       systems.run();
     };
 
-    const handleUp = (evt: PointerEvent) => {
+    const handleUp = (evt: any) => {
       document.removeEventListener("pointermove", handleMove);
       document.removeEventListener("pointerup", handleUp);
 
@@ -109,6 +93,5 @@ export function dragElement(args: SystemArgs): void {
   }
 
   dragContent.style.transform = transform;
-
   handleOverDZ(x, y, dragContent, world);
 }
