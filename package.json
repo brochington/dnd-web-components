@@ -1,5 +1,5 @@
 {
-  "name": "@brochignton/dnd-web-components",
+  "name": "@brochington/dnd-web-components",
   "version": "0.0.1",
   "description": "Web Components for Dragging and Dropping",
   "main": "index.js",
